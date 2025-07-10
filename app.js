@@ -1,0 +1,829 @@
+const express = require('express');
+const path = require('path');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// 정적 파일 제공
+app.use(express.static(path.join(__dirname, 'public')));
+
+// 루트 경로
+app.get('/', (req, res) => {
+    res.send(`
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>벌레없음 - 차세대 해충방제 솔루션</title>
+  <style>
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans KR', sans-serif;
+      background: #fff;
+      color: #4E5968; /* Body text color */
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: #191F28; /* Heading color */
+      font-weight: 700;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      transition: box-shadow 0.2s ease;
+      z-index: 1000;
+      border-bottom: 1px solid #F2F4F6;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #0064FF;
+      text-decoration: none;
+    }
+    
+    .menu {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    
+    .menu a {
+      text-decoration: none;
+      color: #333D4B;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    
+    .menu a:hover {
+      color: #0064FF;
+    }
+    
+    .btn {
+      color: #fff;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background-color: #0064FF;
+    }
+    
+    .btn-primary:hover {
+      background-color: #0053D1;
+      transform: translateY(-2px);
+    }
+    
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #333D4B;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background-color: #F7F8FA;
+      text-align: center;
+      padding: 160px 0 120px;
+      margin-top: 70px; /* Header height */
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      line-height: 1.3;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+      color: #6B7684;
+    }
+    
+    .hero-features {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+    }
+    
+    .hero-feature {
+      background: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      border: 1px solid #E5E8EB;
+      font-weight: 500;
+      color: #4E5968;
+    }
+    
+    /* Section Styles */
+    section {
+      padding: 100px 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #6B7684;
+      margin-bottom: 5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Service Points */
+    .points {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .card {
+      background: #F7F8FA;
+      padding: 2.5rem;
+      border-radius: 20px;
+      border: 1px solid #F7F8FA;
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #E5E8EB;
+    }
+    
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    /* Service Process */
+    #process {
+      background-color: #F7F8FA;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    
+    .process-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      border: 1px solid #E5E8EB;
+    }
+        
+    .process-number {
+      background: #0064FF;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 0 auto 1.5rem;
+    }
+    
+    .process-card h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Pricing Table */
+    .pricing-table {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid #E5E8EB;
+      margin-top: 3rem;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    th {
+      background: #F7F8FA;
+      color: #4E5968;
+      padding: 1.25rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1rem;
+      border-bottom: 1px solid #E5E8EB;
+    }
+    
+    td {
+      padding: 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid #E5E8EB;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .service-type {
+      font-weight: 600;
+      color: #333D4B;
+      background: #FDFDFD;
+    }
+    
+    .price {
+      font-weight: 700;
+      color: #0064FF;
+      font-size: 1.1rem;
+    }
+    
+    /* Trust Section */
+    .trust {
+      background-color: #0064FF;
+    }
+    .trust .section-title, .trust .card h3, .trust .card p {
+      color: #fff;
+    }
+    .trust .section-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .trust .card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Reviews */
+    #reviews {
+      background-color: #F7F8FA;
+    }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .review-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 15px;
+      border: 1px solid #E5E8EB;
+    }
+        
+    .review-text {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      color: #333D4B;
+    }
+    
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .review-avatar {
+      width: 50px;
+      height: 50px;
+      background: #E5E8EB;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4E5968;
+      font-weight: 600;
+    }
+    
+    .review-info h5 {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    
+    .review-info p {
+      color: #6B7684;
+      font-size: 0.9rem;
+    }
+    
+    .stars {
+      color: #FFC107;
+      margin-top: 0.5rem;
+    }
+    
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1px solid #E5E8EB;
+      margin-bottom: 1rem;
+    }
+    
+    .faq-question {
+      width: 100%;
+      padding: 1.5rem 1rem;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333D4B;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .faq-answer {
+      padding: 0 1rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.35s ease-in-out;
+    }
+    
+    .faq-answer.active {
+      max-height: 200px;
+      padding: 0 1rem 1.5rem;
+    }
+    
+    /* Footer */
+    footer {
+      background: #191F28;
+      color: #A6B0BB;
+      padding: 4rem 0;
+      font-size: 0.95rem;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .footer-col h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    
+    .footer-col a {
+      color: #A6B0BB;
+      text-decoration: none;
+      line-height: 1.8;
+    }
+    
+    .footer-col a:hover {
+      color: #fff;
+    }
+    
+    .footer-col ul {
+      list-style: none;
+    }
+    
+    .footer-col ul li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid #333D4B;
+      padding-top: 2rem;
+      text-align: center;
+    }
+    
+    /* Contact CTA */
+    .cta-section {
+      background: #fff;
+      text-align: center;
+    }
+    
+    .cta-section .container {
+        background-color: #0064FF;
+        border-radius: 20px;
+        padding: 4rem;
+        color: #fff;
+    }
+
+    .cta-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    
+    .cta-section p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    .btn-secondary {
+      background: #fff;
+      color: #0064FF;
+      border: 2px solid #fff;
+    }
+
+    .btn-secondary:hover {
+      background: #F2F4F6;
+      color: #0053D1;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .menu {
+        display: none; /* Needs JS to function */
+      }
+      .hamburger {
+        display: block;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .section-title {
+        font-size: 2.2rem;
+      }
+      .points, .process-grid, .review-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding: 120px 0 80px;
+      }
+      table, th, td {
+        font-size: 0.9rem;
+        padding: 0.75rem 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">벌레없음</a>
+        <div class="menu">
+          <a href="#service">서비스</a>
+          <a href="#process">진행과정</a>
+          <a href="#pricing">가격</a>
+          <a href="#reviews">고객후기</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact" class="btn btn-primary">무료 진단 예약</a>
+        </div>
+        <div class="hamburger">☰</div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>해충의 유입 경로를<br>원천적으로 차단합니다</h1>
+        <p>벌레없음의 물리적 방제 솔루션으로 근본적인 문제를 해결하세요.</p>
+        <a href="#contact" class="btn btn-primary">무료 진단 예약하기</a>
+        <div class="hero-features">
+          <div class="hero-feature">✓ 24시간 내 방문</div>
+          <div class="hero-feature">✓ 인체 무해 약품</div>
+          <div class="hero-feature">✓ 1년 A/S 보증</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="service">
+      <div class="container">
+        <h2 class="section-title">벌레없음은<br>무엇이 다른가요?</h2>
+        <p class="section-subtitle">단순히 벌레를 죽이는 것이 아닌, 벌레가 살 수 없는 환경을 만듭니다. 보이지 않는 유입 경로까지 완벽히 차단하는 것이 핵심입니다.</p>
+        <div class="points">
+          <div class="card">
+            <h3>🔍 정밀 현장 진단</h3>
+            <p>해충의 종류, 서식지, 이동 경로를 정확하게 파악하여 맞춤형 방제 전략을 수립합니다. 모든 틈새와 균열을 점검하여 잠재적 위험까지 예측합니다.</p>
+          </div>
+          <div class="card">
+            <h3>🛡️ 물리적 원천 차단</h3>
+            <p>현관, 배수구, 환기구 등 6대 주요 침입 경로를 특수 제작된 자재(실리콘, 스틸울 등)로 물리적으로 봉쇄하여 해충의 유입을 원천적으로 막습니다.</p>
+          </div>
+          <div class="card">
+            <h3>📊 데이터 기반 관리</h3>
+            <p>전용 트랩을 설치하여 해충 활동을 24시간 모니터링합니다. 방제 효과를 데이터로 확인하고, 필요시 즉각적인 추가 조치를 통해 완벽을 기합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <h2 class="section-title">4단계 방제 시스템</h2>
+        <p class="section-subtitle">과학적이고 체계적인 4단계 완벽 시스템으로 해충 문제를 근본적으로 해결합니다.</p>
+        <div class="process-grid">
+          <div class="process-card">
+            <div class="process-number">1</div>
+            <h4>정밀 진단</h4>
+            <p>온습도, 환경을 측정해 해충 종류와 유입 경로를 파악하고, 과학적인 방제 계획을 설계합니다.</p>
+          </div>
+          <div class="process-card">
+            <div class="process-number">2</div>
+            <h4>경로 차단</h4>
+            <p>6가지 주요 유입 경로를 순서대로 봉쇄합니다. 각 경로별 전용 차단재로 물리적 완전 차단을 실시합니다.</p>
+          </div>
+          <div class="process-card">
+            <div class="process-number">3</div>
+            <h4>안전 퇴치</h4>
+            <p>인체에 무해한 U등급 약품과 연무 처리로 성충과 유충을 동시 제거하고, 지속 방어막을 구축합니다.</p>
+          </div>
+          <div class="process-card">
+            <div class="process-number">4</div>
+            <h4>지속 관리</h4>
+            <p>설치된 트랩 데이터로 효과를 실시간 확인하고, 필요한 보완 작업을 진행하여 장기적인 안심을 보장합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <h2 class="section-title">투명한 가격 정책</h2>
+        <p class="section-subtitle">추가 비용이나 장기 계약 없이, 오직 문제 해결을 위한 합리적인 비용만을 제안합니다.</p>
+        <div class="pricing-table">
+          <table>
+            <thead>
+              <tr>
+                <th>서비스 유형</th>
+                <th>공간 구분</th>
+                <th>가격 (VAT 포함)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="4" class="service-type">유입 해충 차단</td>
+                <td>원룸 · 오피스텔 (소형)</td>
+                <td class="price">90,000원</td>
+              </tr>
+              <tr>
+                <td>투룸 · 빌라</td>
+                <td class="price">140,000원</td>
+              </tr>
+              <tr>
+                <td>아파트 (30평대)</td>
+                <td class="price">160,000원</td>
+              </tr>
+              <tr>
+                <td>사무실 · 상가 · 주택</td>
+                <td class="price">견적 문의</td>
+              </tr>
+              <tr>
+                <td rowspan="4" class="service-type">서식 해충 박멸<br><small>(기본 2회 방문)</small></td>
+                <td>원룸 · 오피스텔 (소형)</td>
+                <td class="price">130,000원</td>
+              </tr>
+              <tr>
+                <td>투룸 · 빌라</td>
+                <td class="price">200,000원</td>
+              </tr>
+              <tr>
+                <td>아파트 (30평대)</td>
+                <td class="price">300,000원</td>
+              </tr>
+               <tr>
+                <td>사무실 · 상가 · 주택</td>
+                <td class="price">견적 문의</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust">
+      <div class="container">
+        <h2 class="section-title">고객 안심 포인트</h2>
+        <p class="section-subtitle">벌레없음은 고객님의 불안과 불편함을 최우선으로 생각합니다.</p>
+        <div class="points">
+          <div class="card">
+            <h3>💳 추가 비용 NO</h3>
+            <p>견적서에 명시된 금액 외에 어떠한 추가 비용도 요구하지 않습니다. 모든 결제는 투명하게 이루어집니다.</p>
+          </div>
+          <div class="card">
+            <h3>🏠 장기 계약 NO</h3>
+            <p>불필요한 장기 계약을 강요하지 않습니다. 한 번의 서비스로 최대의 효과를 내는 것을 목표로 합니다.</p>
+          </div>
+          <div class="card">
+            <h3>🧪 투명한 성분 안내</h3>
+            <p>인체에 무해한 최고 등급의 약품만을 사용하며, 모든 성분과 작업 과정을 투명하게 공개합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="container">
+        <h2 class="section-title">고객들이 증명하는<br>벌레없음의 효과</h2>
+        <p class="section-subtitle">실제 고객들의 생생한 경험담을 확인해보세요.</p>
+        <div class="review-grid">
+          <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">반신반의했는데 정말 벌레가 사라졌어요. 틈새를 이렇게 꼼꼼하게 막아주실 줄은 몰랐습니다. 진작 할 걸 그랬어요.</p>
+            <div class="review-author">
+              <div class="review-avatar">김</div>
+              <div class="review-info">
+                <h5>김*진 고객님</h5>
+                <p>서울시 강남구, 아파트</p>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">사무실에 자꾸 벌레가 나와서 직원들 불만이 많았는데, 서비스 받고 나서 완전히 해결됐습니다. 업무 효율이 올랐어요!</p>
+            <div class="review-author">
+              <div class="review-avatar">박</div>
+              <div class="review-info">
+                <h5>박*서 대표님</h5>
+                <p>경기도 판교, IT 기업</p>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">아이 때문에 약 쓰는 게 걱정이었는데, 친환경 약품에 물리적 차단 위주라 안심이 됐어요. 설명도 정말 친절하게 해주셨습니다.</p>
+            <div class="review-author">
+              <div class="review-avatar">이</div>
+              <div class="review-info">
+                <h5>이*영 고객님</h5>
+                <p>인천시 송도, 주상복합</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">자주 묻는 질문</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Q. 정말 한 번만으로 해결되나요?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>대부분의 유입형 해충은 1회 서비스로 해결됩니다. 해충의 유입 경로를 물리적으로 차단하기 때문에 재발률이 매우 낮습니다. 다만, 내부에서 이미 서식하는 바퀴벌레 등의 경우, 알까지 박멸하기 위해 2회 이상의 서비스가 필요할 수 있습니다.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Q. 사용하는 약품은 안전한가요?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>네, 저희는 사람이 있는 공간에서도 안전하게 사용할 수 있는 U등급(Ultra Low Volume) 약품만을 사용합니다. 또한, 물리적 차단을 우선으로 하여 화학 약품 사용을 최소화하고 있습니다.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Q. 서비스 후 A/S 보증이 되나요?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>네, 시공 후 동일한 문제 발생 시 1년간 무상으로 A/S를 제공해 드립니다. 계약서에 명시된 내용에 따라 책임지고 관리해 드립니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2>지금 바로<br>무료 정밀 진단을 받아보세요</h2>
+            <p>전문가가 방문하여 해충 유입 경로를 분석하고<br>최적의 해결책을 제시해 드립니다.</p>
+            <a href="#" class="btn btn-secondary">무료 진단 예약하기</a>
+        </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+                 <div class="footer-col">
+           <h4 class="logo">벌레없음</h4>
+           <p>주식회사 벌레없음<br>
+           대표자: 송용하 | 사업자등록번호: 652-86-03587<br>
+           주소: 경기도 하남시 미사강변동로 79, 11층 1103호-4<br>
+           통신판매업신고: 제2025-서울강남-0000호</p>
+         </div>
+        <div class="footer-col">
+          <h4>고객센터</h4>
+          <p>
+            전화: 1588-0000<br>
+            이메일: contact@bugfree.com<br>
+            운영시간: 평일 09:00 ~ 18:00
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>서비스</h4>
+          <ul>
+            <li><a href="#service">서비스 소개</a></li>
+            <li><a href="#process">진행과정</a></li>
+            <li><a href="#pricing">가격</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>정책</h4>
+          <ul>
+            <li><a href="#">개인정보처리방침</a></li>
+            <li><a href="#">서비스 이용약관</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Bugfree. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        answer.classList.toggle('active');
+        const icon = question.querySelector('span:last-child');
+        if (answer.classList.contains('active')) {
+          icon.textContent = '-';
+        } else {
+          icon.textContent = '+';
+        }
+      });
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+      } else {
+        header.style.boxShadow = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
+    `);
+});
+
+// 서버 시작
+app.listen(PORT, () => {
+    console.log(`서버가 포트 ${PORT}에서 실행 중입니다.`);
+    console.log(`브라우저에서 http://localhost:${PORT} 을 방문하세요.`);
+}); 
