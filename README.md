@@ -46,4 +46,4 @@ npm run dev
 
 ## 라이선스
 
-© 2025 주식회사 벌레없음. All rights reserved. 
+© 2025 주식회사 벌레없음. All rights reserved.
