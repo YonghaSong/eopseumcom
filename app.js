@@ -532,8 +532,8 @@ app.get('/', (req, res) => {
         <p>벌레없음의 물리적 방제 솔루션으로 근본적인 문제를 해결하세요.</p>
         <a href="#contact" class="btn btn-primary">무료 진단 예약하기</a>
         <div class="hero-features">
-          <div class="hero-feature">✓ 24시간 내 방문</div>
-          <div class="hero-feature">✓ 인체 무해 약품</div>
+          <div class="hero-feature">✓ 근본적 문제해결</div>
+          <div class="hero-feature">✓ 화학살충제 최소사용</div>
           <div class="hero-feature">✓ 3개월 A/S 보증</div>
         </div>
       </div>
@@ -554,7 +554,7 @@ app.get('/', (req, res) => {
           </div>
           <div class="card">
             <h3>📊 데이터 기반 관리</h3>
-            <p>전용 트랩을 설치하여 해충 활동을 24시간 모니터링합니다. 방제 효과를 데이터로 확인하고, 필요시 즉각적인 추가 조치를 통해 완벽을 기합니다.</p>
+            <p>전용 트랩을 설치하여 해충 활동을 모니터링합니다. 방제 효과를 데이터로 확인하고, 필요시 추가 조치를 통해 완벽을 기합니다.</p>
           </div>
         </div>
       </div>
@@ -568,7 +568,7 @@ app.get('/', (req, res) => {
           <div class="process-card">
             <div class="process-number">1</div>
             <h4>정밀 진단</h4>
-            <p>온습도, 환경을 측정해 해충 종류와 유입 경로를 파악하고, 과학적인 방제 계획을 설계합니다.</p>
+            <p>전문가의 점검뿐 아니라 UV, 기체 검사까지 과학적 방법으로 해충의 서식여부와 유입경로를 파악합니다. 완전한 해결을 위한 방제계획을 설계합니다.</p>
           </div>
           <div class="process-card">
             <div class="process-number">2</div>
@@ -578,7 +578,7 @@ app.get('/', (req, res) => {
           <div class="process-card">
             <div class="process-number">3</div>
             <h4>안전 퇴치</h4>
-            <p>인체에 무해한 U등급 약품과 연무 처리로 성충과 유충을 동시 제거하고, 지속 방어막을 구축합니다.</p>
+            <p>살충제 최소사용의 원칙으로 정확한 서식지점만 정밀타격 합니다. WHO 안전성등급 최고등급인 U등급 약퓸을 사용합니다.</p>
           </div>
           <div class="process-card">
             <div class="process-number">4</div>
