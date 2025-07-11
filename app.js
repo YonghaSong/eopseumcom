@@ -534,7 +534,7 @@ app.get('/', (req, res) => {
         <div class="hero-features">
           <div class="hero-feature">✓ 24시간 내 방문</div>
           <div class="hero-feature">✓ 인체 무해 약품</div>
-          <div class="hero-feature">✓ 1년 A/S 보증</div>
+          <div class="hero-feature">✓ 3개월 A/S 보증</div>
         </div>
       </div>
     </section>
@@ -734,7 +734,7 @@ app.get('/', (req, res) => {
                         <span>+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>네, 시공 후 동일한 문제 발생 시 1년간 무상으로 A/S를 제공해 드립니다. 계약서에 명시된 내용에 따라 책임지고 관리해 드립니다.</p>
+                        <p>네, 시공 후 동일한 문제 발생 시 3개월간 무상으로 A/S를 제공해 드립니다. 계약서에 명시된 내용에 따라 책임지고 관리해 드립니다.</p>
                     </div>
                 </div>
             </div>
