@@ -822,6 +822,11 @@ app.get('/', (req, res) => {
     `);
 });
 
+// Privacy 페이지 라우팅
+app.get('/privacy', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'privacy.html'));
+});
+
 // 서버 시작
 app.listen(PORT, () => {
     console.log(`서버가 포트 ${PORT}에서 실행 중입니다.`);
