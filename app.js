@@ -779,8 +779,8 @@ app.get('/', (req, res) => {
         <div class="footer-col">
           <h4>정책</h4>
           <ul>
-            <li><a href="#">개인정보처리방침</a></li>
-            <li><a href="#">서비스 이용약관</a></li>
+                          <li><a href="/privacy">개인정보처리방침</a></li>
+              <li><a href="/tos">서비스 이용약관</a></li>
           </ul>
         </div>
       </div>
@@ -820,6 +820,16 @@ app.get('/', (req, res) => {
 </body>
 </html>
     `);
+});
+
+// Privacy 페이지 라우팅
+app.get('/privacy', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'privacy.html'));
+});
+
+// Terms of Service 페이지 라우팅
+app.get('/tos', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'tos.html'));
 });
 
 // 서버 시작
