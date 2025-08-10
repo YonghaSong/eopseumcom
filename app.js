@@ -95,7 +95,7 @@ app.get('/', (req, res) => {
     }
     
     .btn {
-      color: #fff;
+      color: #3c1e1e;
       padding: 0.7rem 1.5rem;
       border-radius: 8px;
       text-decoration: none;
@@ -105,11 +105,12 @@ app.get('/', (req, res) => {
     }
 
     .btn-primary {
-      background-color: #0064FF;
+      background-color: #FEE500;
+      color: #3c1e1e;
     }
     
     .btn-primary:hover {
-      background-color: #0053D1;
+      background-color: #FAD900;
       transform: translateY(-2px);
     }
     
@@ -470,14 +471,16 @@ app.get('/', (req, res) => {
     }
     
     .btn-secondary {
-      background: #fff;
-      color: #0064FF;
-      border: 2px solid #fff;
+      background: #FEE500;
+      color: #3c1e1e;
+      border: 2px solid #FEE500;
+      font-weight: 600;
     }
 
     .btn-secondary:hover {
-      background: #F2F4F6;
-      color: #0053D1;
+      background: #FAD900;
+      color: #3c1e1e;
+      border-color: #FAD900;
     }
     
     /* Responsive Design */
@@ -518,7 +521,7 @@ app.get('/', (req, res) => {
           <a href="#pricing">가격</a>
           <a href="#reviews">고객후기</a>
           <a href="#faq">FAQ</a>
-          <a href="#contact" class="btn btn-primary">무료 진단 예약</a>
+          <a href="http://pf.kakao.com/_hxeQWn/chat" class="btn btn-primary" target="_blank">카카오톡 상담하기</a>
         </div>
         <div class="hamburger">☰</div>
       </nav>
@@ -530,7 +533,7 @@ app.get('/', (req, res) => {
       <div class="container">
         <h1>해충의 유입 경로를<br>원천적으로 차단합니다</h1>
         <p>벌레없음의 물리적 방제 솔루션으로 근본적인 문제를 해결하세요.</p>
-        <a href="#contact" class="btn btn-primary">무료 진단 예약하기</a>
+        <a href="http://pf.kakao.com/_hxeQWn/chat" class="btn btn-primary" target="_blank">카카오톡 상담하기</a>
         <div class="hero-features">
           <div class="hero-feature">✓ 근본적 문제해결</div>
           <div class="hero-feature">✓ 화학살충제 최소사용</div>
@@ -745,7 +748,7 @@ app.get('/', (req, res) => {
         <div class="container">
             <h2>지금 바로<br>무료 정밀 진단을 받아보세요</h2>
             <p>전문가가 방문하여 해충 유입 경로를 분석하고<br>최적의 해결책을 제시해 드립니다.</p>
-            <a href="#" class="btn btn-secondary">무료 진단 예약하기</a>
+            <a href="http://pf.kakao.com/_hxeQWn/chat" class="btn btn-secondary" target="_blank">카카오톡 상담하기</a>
         </div>
     </section>
   </main>
