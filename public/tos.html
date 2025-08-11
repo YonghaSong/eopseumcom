@@ -204,8 +204,16 @@
         font-size: 2rem;
       }
       
-      .menu {
-        display: none;
+      .menu { display: none; }
+      .menu.open {
+        display: flex;
+        position: absolute;
+        top: 70px; left: 0; right: 0;
+        background: #fff;
+        border-bottom: 1px solid #E5E8EB;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 1.25rem 1.25rem;
       }
     }
   </style>
@@ -215,14 +223,43 @@
   <header id="header">
     <nav class="container">
       <a href="/" class="logo">벌레없음</a>
-      <div class="menu">
+      <div class="menu" id="primary-menu">
         <a href="/">홈</a>
         <a href="/#services">서비스</a>
         <a href="/#about">회사소개</a>
         <a href="/#contact">문의</a>
       </div>
+      <button class="hamburger" id="menu-toggle" aria-label="메뉴 열기" aria-controls="primary-menu" aria-expanded="false">☰</button>
     </nav>
-  </header>
+    </header>
+
+  <script>
+    // Mobile menu toggle for TOS page
+    const menuToggleButton = document.getElementById('menu-toggle');
+    const primaryMenu = document.getElementById('primary-menu');
+    const closeMenu = () => {
+      primaryMenu.classList.remove('open');
+      menuToggleButton.setAttribute('aria-expanded', 'false');
+      menuToggleButton.setAttribute('aria-label', '메뉴 열기');
+    };
+    const openMenu = () => {
+      primaryMenu.classList.add('open');
+      menuToggleButton.setAttribute('aria-expanded', 'true');
+      menuToggleButton.setAttribute('aria-label', '메뉴 닫기');
+    };
+    menuToggleButton?.addEventListener('click', () => {
+      const isOpen = primaryMenu.classList.contains('open');
+      if (isOpen) closeMenu(); else openMenu();
+    });
+    primaryMenu?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) closeMenu();
+      });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+  </script>
 
   <!-- Main Content -->
   <main>

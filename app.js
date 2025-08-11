@@ -113,12 +113,13 @@ app.get('/', (req, res) => {
       transform: translateY(-2px);
     }
     
-    .hamburger {
-      display: none;
-      font-size: 1.8rem;
-      cursor: pointer;
-      color: #333D4B;
-    }
+         .hamburger {
+       display: none;
+       font-size: 1.8rem;
+       cursor: pointer;
+       color: #333D4B;
+     }
+     .menu.open { display: flex; }
     
     /* Hero Section */
     .hero {
@@ -481,16 +482,22 @@ app.get('/', (req, res) => {
     }
     
     /* Responsive Design */
-    @media (max-width: 768px) {
-      .menu {
-        display: none; /* Needs JS to function */
-      }
-      .hamburger {
-        display: block;
-      }
-      .hero h1 {
-        font-size: 2.5rem;
-      }
+         @media (max-width: 768px) {
+       .menu { display: none; }
+       .menu.open { 
+         display: flex; 
+         position: absolute; 
+         top: 70px; left: 0; right: 0; 
+         background: #fff; 
+         border-bottom: 1px solid #E5E8EB; 
+         flex-direction: column; 
+         gap: 1rem; 
+         padding: 1rem 1.25rem 1.25rem; 
+       }
+       .hamburger { display: block; }
+       .hero h1 {
+         font-size: 2.5rem;
+       }
       .section-title {
         font-size: 2.2rem;
       }
@@ -512,15 +519,15 @@ app.get('/', (req, res) => {
     <div class="container">
       <nav>
         <a href="#" class="logo">벌레없음</a>
-        <div class="menu">
-          <a href="#service">서비스</a>
-          <a href="#process">진행과정</a>
-          <a href="#pricing">가격</a>
-          <a href="#reviews">고객후기</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contact" class="btn btn-primary">무료 진단 예약</a>
-        </div>
-        <div class="hamburger">☰</div>
+                 <div class="menu" id="primary-menu">
+           <a href="#service">서비스</a>
+           <a href="#process">진행과정</a>
+           <a href="#pricing">가격</a>
+           <a href="#reviews">고객후기</a>
+           <a href="#faq">FAQ</a>
+           <a href="#contact" class="btn btn-primary">무료 진단 예약</a>
+         </div>
+         <button class="hamburger" id="menu-toggle" aria-label="메뉴 열기" aria-controls="primary-menu" aria-expanded="false">☰</button>
       </nav>
     </div>
   </header>
@@ -790,35 +797,63 @@ app.get('/', (req, res) => {
     </div>
   </footer>
 
-  <script>
-    // Simple FAQ Accordion
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    faqQuestions.forEach(question => {
-      question.addEventListener('click', () => {
-        const answer = question.nextElementSibling;
-        answer.classList.toggle('active');
-        const icon = question.querySelector('span:last-child');
-        if (answer.classList.contains('active')) {
-          icon.textContent = '-';
-        } else {
-          icon.textContent = '+';
-        }
-      });
-    });
-
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
-      } else {
-        header.style.boxShadow = 'none';
-      }
-    });
-  </script>
-
-</body>
-</html>
+     <script>
+     // Simple FAQ Accordion
+     const faqQuestions = document.querySelectorAll('.faq-question');
+     faqQuestions.forEach(question => {
+       question.addEventListener('click', () => {
+         const answer = question.nextElementSibling;
+         answer.classList.toggle('active');
+         const icon = question.querySelector('span:last-child');
+         if (answer.classList.contains('active')) {
+           icon.textContent = '-';
+         } else {
+           icon.textContent = '+';
+         }
+       });
+     });
+ 
+     // Header scroll effect
+     const header = document.getElementById('header');
+     window.addEventListener('scroll', () => {
+       if (window.scrollY > 50) {
+         header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+       } else {
+         header.style.boxShadow = 'none';
+       }
+     });
+ 
+     // Mobile menu toggle
+     const menuToggleButton = document.getElementById('menu-toggle');
+     const primaryMenu = document.getElementById('primary-menu');
+     const closeMenu = () => {
+       primaryMenu.classList.remove('open');
+       menuToggleButton.setAttribute('aria-expanded', 'false');
+       menuToggleButton.setAttribute('aria-label', '메뉴 열기');
+     };
+     const openMenu = () => {
+       primaryMenu.classList.add('open');
+       menuToggleButton.setAttribute('aria-expanded', 'true');
+       menuToggleButton.setAttribute('aria-label', '메뉴 닫기');
+     };
+     menuToggleButton?.addEventListener('click', () => {
+       const isOpen = primaryMenu.classList.contains('open');
+       if (isOpen) closeMenu(); else openMenu();
+     });
+     // Close on link click (mobile UX)
+     primaryMenu?.querySelectorAll('a').forEach(link => {
+       link.addEventListener('click', () => {
+         if (window.innerWidth <= 768) closeMenu();
+       });
+     });
+     // Close on escape key
+     document.addEventListener('keydown', (e) => {
+       if (e.key === 'Escape') closeMenu();
+     });
+   </script>
+ 
+ </body>
+ </html>
     `);
 });
 
