@@ -119,6 +119,9 @@ app.get('/', (req, res) => {
        font-size: 1.8rem;
        cursor: pointer;
        color: #333D4B;
+       background: none;
+       border: none;
+       padding: 0;
      }
      .menu.open { display: flex; }
     
@@ -528,7 +531,6 @@ app.get('/', (req, res) => {
           <a href="#pricing">가격</a>
           <a href="#reviews">고객후기</a>
           <a href="#faq">FAQ</a>
-          <a href="http://pf.kakao.com/_hxeQWn/chat" class="btn btn-primary" target="_blank">카카오톡 상담하기</a>
         </div>
         <button class="hamburger" id="menu-toggle" aria-label="메뉴 열기" aria-controls="primary-menu" aria-expanded="false">☰</button>
       </nav>
