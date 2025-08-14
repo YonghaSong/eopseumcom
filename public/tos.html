@@ -4,7 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>서비스 이용약관 - 벌레없음</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
+    /* CSS Variables */
+    :root {
+      --font-korean: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-english: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      
+      --color-white: #ffffff;
+      --color-black: #000000;
+      --color-primary: #FEE500;
+      --color-soft-green: #5C897C;
+      --color-pale-yellow: #FFE89E;
+      --color-soft-blue: #E8F2FF;
+      --color-warm-gray: #F7F8FA;
+      
+      --color-gray-50: #F9FAFB;
+      --color-gray-100: #F7F8FA;
+      --color-gray-200: #E5E8EB;
+      --color-gray-300: #D1D6DB;
+      --color-gray-400: #B0B8C1;
+      --color-gray-500: #8B95A1;
+      --color-gray-600: #6B7684;
+      --color-gray-700: #4E5968;
+      --color-gray-800: #333D4B;
+      --color-gray-900: #191F28;
+      
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+      --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+      
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      
+      --transition-base: 0.2s ease-out;
+    }
+    
     /* Reset & Base */
     * {
       margin: 0;
@@ -17,423 +59,436 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans KR', sans-serif;
-      background: #fff;
-      color: #4E5968;
-      line-height: 1.7;
+      font-family: var(--font-korean);
+      background: var(--color-white);
+      color: var(--color-gray-700);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      font-size: 16px;
     }
 
     h1, h2, h3, h4, h5, h6 {
-      color: #191F28;
-      font-weight: 700;
+      color: var(--color-gray-900);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.4;
     }
     
+    /* Container */
     .container {
-      width: 90%;
-      max-width: 800px;
+      max-width: 768px;
       margin: 0 auto;
+      padding: 0 20px;
     }
     
     /* Header */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      transition: box-shadow 0.2s ease;
-      z-index: 1000;
-      border-bottom: 1px solid #F2F4F6;
+    .docs-header {
+      padding: 60px 0 40px;
+      border-bottom: 1px solid var(--color-gray-200);
     }
     
-    nav {
-      display: flex;
-      justify-content: space-between;
+    .back-link {
+      display: inline-flex;
       align-items: center;
-      height: 70px;
-    }
-    
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: #0064FF;
+      color: var(--color-gray-600);
       text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 24px;
+      transition: color var(--transition-base);
     }
     
-    .menu {
-      display: flex;
-      gap: 2.5rem;
-      align-items: center;
+    .back-link:hover {
+      color: var(--color-gray-900);
     }
     
-    .menu a {
-      text-decoration: none;
-      color: #333D4B;
+    .back-link::before {
+      content: "←";
+      margin-right: 8px;
+      font-size: 16px;
+    }
+    
+    .docs-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--color-gray-900);
+    }
+    
+    .docs-subtitle {
+      font-size: 16px;
+      color: var(--color-gray-600);
+      margin-bottom: 32px;
+    }
+    
+    /* Version History */
+    .version-history {
+      background: var(--color-gray-50);
+      border: 1px solid var(--color-gray-200);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 40px;
+    }
+    
+    .version-history h3 {
+      font-size: 16px;
       font-weight: 600;
-      font-size: 1rem;
-      transition: color 0.3s ease;
+      margin-bottom: 16px;
+      color: var(--color-gray-900);
     }
     
-    .menu a:hover {
-      color: #0064FF;
-    }
-    
-    /* Main Content */
-    main {
-      margin-top: 100px;
-      padding: 2rem 0;
-    }
-    
-    .tos-container {
-      background: #fff;
-      padding: 3rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-    }
-    
-    .tos-title {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      text-align: center;
-      color: #191F28;
-    }
-    
-    .tos-section {
-      margin-bottom: 2.5rem;
-    }
-    
-    .tos-section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #0064FF;
-      border-bottom: 2px solid #F2F4F6;
-      padding-bottom: 0.5rem;
-    }
-    
-    .tos-section h3 {
-      font-size: 1.2rem;
-      margin: 1.5rem 0 0.8rem 0;
-      color: #333D4B;
-    }
-    
-    .tos-section p {
-      margin-bottom: 1rem;
-      line-height: 1.8;
-    }
-    
-    .tos-section ul {
-      margin: 1rem 0;
-      padding-left: 2rem;
-    }
-    
-    .tos-section li {
-      margin-bottom: 0.5rem;
-      line-height: 1.6;
-    }
-    
-    .effective-date {
-      text-align: center;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid #F2F4F6;
-      color: #8B95A1;
-      font-size: 0.9rem;
-    }
-    
-    /* Footer */
-    footer {
-      background: #191F28;
-      color: #8B95A1;
-      padding: 3rem 0 2rem;
-      margin-top: 4rem;
-    }
-    
-    .footer-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-    
-    .footer-section h4 {
-      color: #fff;
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-    }
-    
-    .footer-section ul {
+    .version-list {
       list-style: none;
     }
     
-    .footer-section li {
-      margin-bottom: 0.5rem;
+    .version-item {
+      display: flex;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--color-gray-200);
     }
     
-    .footer-section a {
-      color: #8B95A1;
-      text-decoration: none;
-      transition: color 0.3s ease;
+    .version-item:last-child {
+      border-bottom: none;
     }
     
-    .footer-section a:hover {
-      color: #0064FF;
+    .version-date {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-gray-900);
+      width: 120px;
+      flex-shrink: 0;
     }
     
-    .footer-bottom {
+    .version-badge {
+      background: var(--color-soft-green);
+      color: var(--color-white);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 12px;
+      margin-right: 12px;
+    }
+    
+    .version-badge.current {
+      background: var(--color-primary);
+      color: var(--color-black);
+    }
+    
+    .version-desc {
+      font-size: 14px;
+      color: var(--color-gray-600);
+      flex: 1;
+    }
+    
+    /* Content */
+    .docs-content {
+      padding-bottom: 80px;
+    }
+    
+    .content-section {
+      margin-bottom: 48px;
+    }
+    
+    .content-section h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--color-gray-900);
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .content-section h2::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 20px;
+      background: var(--color-soft-green);
+      border-radius: 2px;
+    }
+    
+    .content-section h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 24px 0 12px 0;
+      color: var(--color-gray-800);
+    }
+    
+    .content-section p {
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    
+    .content-section ul {
+      margin: 16px 0;
+      padding-left: 20px;
+    }
+    
+    .content-section li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+      position: relative;
+    }
+    
+    .content-section li::marker {
+      color: var(--color-soft-green);
+    }
+    
+    /* Footer Info */
+    .footer-info {
+      margin-top: 60px;
+      padding-top: 32px;
+      border-top: 1px solid var(--color-gray-200);
+      background: var(--color-gray-50);
+      border-radius: var(--radius-md);
+      padding: 32px;
       text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid #333D4B;
-      color: #6B7684;
+    }
+    
+    .footer-info h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--color-gray-900);
+    }
+    
+    .footer-info p {
+      font-size: 14px;
+      color: var(--color-gray-600);
+      margin-bottom: 8px;
+    }
+    
+    .footer-info .highlight {
+      font-weight: 600;
+      color: var(--color-gray-900);
     }
     
     /* Responsive */
     @media (max-width: 768px) {
       .container {
-        width: 95%;
+        padding: 0 16px;
       }
       
-      .tos-container {
-        padding: 2rem 1.5rem;
+      .docs-header {
+        padding: 40px 0 32px;
       }
       
-      .tos-title {
-        font-size: 2rem;
+      .docs-title {
+        font-size: 24px;
       }
       
-      .menu { display: none; }
-      .menu.open {
-        display: flex;
-        position: absolute;
-        top: 70px; left: 0; right: 0;
-        background: #fff;
-        border-bottom: 1px solid #E5E8EB;
+      .version-history {
+        padding: 16px;
+      }
+      
+      .version-item {
         flex-direction: column;
-        gap: 1rem;
-        padding: 1rem 1.25rem 1.25rem;
+        align-items: flex-start;
+        padding: 12px 0;
+      }
+      
+      .version-date {
+        width: auto;
+        margin-bottom: 4px;
+      }
+      
+      .content-section h2 {
+        font-size: 18px;
+        padding-left: 16px;
+      }
+      
+      .content-section h2::before {
+        width: 3px;
+        height: 16px;
+      }
+      
+      .footer-info {
+        padding: 24px 16px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .docs-title {
+        font-size: 22px;
+      }
+      
+      .content-section h2 {
+        font-size: 16px;
+      }
+      
+      .content-section {
+        margin-bottom: 32px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header id="header">
-    <nav class="container">
-      <a href="/" class="logo">벌레없음</a>
-      <div class="menu" id="primary-menu">
-        <a href="/">홈</a>
-        <a href="/#services">서비스</a>
-        <a href="/#about">회사소개</a>
-        <a href="/#contact">문의</a>
+  <div class="container">
+    <!-- Header -->
+    <header class="docs-header">
+      <a href="/" class="back-link">벌레없음 홈페이지</a>
+      <h1 class="docs-title">서비스 이용약관</h1>
+      <p class="docs-subtitle">벌레없음 서비스 이용에 관한 약관입니다.</p>
+      
+      <!-- Version History -->
+      <div class="version-history">
+        <h3>약관 변경 히스토리</h3>
+        <ul class="version-list">
+          <li class="version-item">
+            <div class="version-date">
+              <span class="version-badge current">최신</span>
+              2025.08.16
+            </div>
+            <div class="version-desc">최신 약관 시행</div>
+          </li>
+          <li class="version-item">
+            <div class="version-date">
+              <span class="version-badge">이전</span>
+              2024.01.01
+            </div>
+            <div class="version-desc">초기 약관 제정</div>
+          </li>
+        </ul>
       </div>
-      <button class="hamburger" id="menu-toggle" aria-label="메뉴 열기" aria-controls="primary-menu" aria-expanded="false">☰</button>
-    </nav>
     </header>
 
+    <!-- Content -->
+    <main class="docs-content">
+      <section class="content-section">
+        <h2>제1조 (목적)</h2>
+        <p>이 약관은 벌레없음(이하 "회사")이 제공하는 해충방제 서비스(이하 "서비스")의 이용과 관련하여 회사와 이용자 간의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>제2조 (정의)</h2>
+        <p>이 약관에서 사용하는 용어의 정의는 다음과 같습니다.</p>
+        <ul>
+          <li>"서비스"란 회사가 제공하는 해충방제, 방역, 소독 등의 모든 서비스를 의미합니다.</li>
+          <li>"이용자"란 이 약관에 따라 회사가 제공하는 서비스를 받는 자를 의미합니다.</li>
+          <li>"계약"이란 이 약관을 포함하여 서비스 이용과 관련하여 회사와 이용자 간에 체결하는 모든 계약을 의미합니다.</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h2>제3조 (약관의 효력 및 변경)</h2>
+        <h3>1. 약관의 효력</h3>
+        <p>이 약관은 서비스를 이용하고자 하는 모든 이용자에게 그 효력이 발생합니다.</p>
+        <h3>2. 약관의 변경</h3>
+        <p>회사는 필요에 따라 이 약관을 변경할 수 있으며, 변경된 약관은 웹사이트에 공지함으로써 효력이 발생합니다.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>제4조 (서비스의 제공)</h2>
+        <h3>1. 서비스 내용</h3>
+        <p>회사는 다음과 같은 서비스를 제공합니다.</p>
+        <ul>
+          <li>일반 해충방제 서비스</li>
+          <li>정기 방역 서비스</li>
+          <li>긴급 출동 서비스</li>
+          <li>해충 예방 컨설팅</li>
+          <li>기타 회사가 정하는 부가 서비스</li>
+        </ul>
+        <h3>2. 서비스 제공 시간</h3>
+        <p>서비스는 연중무휴 24시간 제공을 원칙으로 하나, 시설 점검, 보수 등의 사유로 서비스 제공이 일시 중단될 수 있습니다.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>제5조 (계약의 성립)</h2>
+        <p>서비스 이용계약은 이용자의 서비스 신청과 회사의 승낙으로 성립됩니다.</p>
+        <p>회사는 다음 각 호에 해당하는 경우 승낙을 거절할 수 있습니다.</p>
+        <ul>
+          <li>신청 내용이 허위인 경우</li>
+          <li>서비스 제공이 기술적으로 불가능한 경우</li>
+          <li>기타 회사가 정한 이용조건에 위배되는 경우</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h2>제6조 (이용자의 의무)</h2>
+        <p>이용자는 다음 각 호의 행위를 하여서는 안 됩니다.</p>
+        <ul>
+          <li>허위 정보의 제공</li>
+          <li>서비스 제공을 방해하는 행위</li>
+          <li>회사 직원에 대한 폭언, 폭행 등 부적절한 행위</li>
+          <li>서비스 이용료의 미납</li>
+          <li>기타 관련 법령에 위반되는 행위</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h2>제7조 (회사의 의무)</h2>
+        <p>회사는 안전하고 효과적인 서비스 제공을 위해 최선을 다하며, 다음 각 호의 의무를 집니다.</p>
+        <ul>
+          <li>전문적이고 안전한 서비스 제공</li>
+          <li>이용자 정보의 보호</li>
+          <li>서비스 품질 개선을 위한 지속적 노력</li>
+          <li>관련 법령 및 규정의 준수</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h2>제8조 (요금 및 결제)</h2>
+        <h3>1. 서비스 요금</h3>
+        <p>서비스 요금은 회사가 정한 요금표에 따르며, 사전에 이용자에게 고지됩니다.</p>
+        <h3>2. 결제 방법</h3>
+        <p>서비스 요금은 현금, 카드결제, 계좌이체 등 회사가 정한 방법으로 결제할 수 있습니다.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>제9조 (서비스의 중단)</h2>
+        <p>회사는 다음 각 호의 경우 서비스 제공을 중단할 수 있습니다.</p>
+        <ul>
+          <li>시설의 보수, 점검 등이 필요한 경우</li>
+          <li>천재지변, 국가비상사태 등 불가피한 사유가 있는 경우</li>
+          <li>이용자가 약관을 위반한 경우</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h2>제10조 (손해배상)</h2>
+        <p>회사는 서비스 제공과 관련하여 고의 또는 중대한 과실이 없는 한 이용자에게 발생한 손해에 대해 배상책임을 지지 않습니다.</p>
+        <p>단, 회사의 고의 또는 중과실로 인한 손해에 대해서는 관련 법령에 따라 배상합니다.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>제11조 (분쟁해결)</h2>
+        <p>서비스 이용과 관련하여 발생한 분쟁은 상호 협의를 통해 해결하는 것을 원칙으로 합니다.</p>
+        <p>협의로 해결되지 않는 경우 관련 법령에 따라 해결합니다.</p>
+      </section>
+
+      <section class="content-section">
+        <h2>제12조 (기타)</h2>
+        <p>이 약관에 명시되지 않은 사항은 관련 법령 및 상관례에 따릅니다.</p>
+      </section>
+
+      <!-- Footer Info -->
+      <div class="footer-info">
+        <h4>약관 시행 정보</h4>
+        <p>본 약관은 <span class="highlight">2025년 8월 16일</span>부터 시행됩니다.</p>
+        <p>최종 수정일: <span class="highlight">2025년 8월 16일</span></p>
+        <p>문의사항이 있으시면 <a href="mailto:yhsong@eopseum.com" style="color: var(--color-soft-green); text-decoration: none;">yhsong@eopseum.com</a>으로 연락주세요.</p>
+      </div>
+    </main>
+  </div>
+
   <script>
-    // Mobile menu toggle for TOS page
-    const menuToggleButton = document.getElementById('menu-toggle');
-    const primaryMenu = document.getElementById('primary-menu');
-    const closeMenu = () => {
-      primaryMenu.classList.remove('open');
-      menuToggleButton.setAttribute('aria-expanded', 'false');
-      menuToggleButton.setAttribute('aria-label', '메뉴 열기');
-    };
-    const openMenu = () => {
-      primaryMenu.classList.add('open');
-      menuToggleButton.setAttribute('aria-expanded', 'true');
-      menuToggleButton.setAttribute('aria-label', '메뉴 닫기');
-    };
-    menuToggleButton?.addEventListener('click', () => {
-      const isOpen = primaryMenu.classList.contains('open');
-      if (isOpen) closeMenu(); else openMenu();
-    });
-    primaryMenu?.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) closeMenu();
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
       });
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMenu();
-    });
-  </script>
-
-  <!-- Main Content -->
-  <main>
-    <div class="container">
-      <div class="tos-container">
-        <h1 class="tos-title">서비스 이용약관</h1>
-        
-        <div class="tos-section">
-          <h2>제1조 (목적)</h2>
-          <p>이 약관은 벌레없음(이하 "회사")이 제공하는 해충방제 서비스(이하 "서비스")의 이용과 관련하여 회사와 이용자 간의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
-        </div>
-
-        <div class="tos-section">
-          <h2>제2조 (정의)</h2>
-          <p>이 약관에서 사용하는 용어의 정의는 다음과 같습니다.</p>
-          <ul>
-            <li>"서비스"란 회사가 제공하는 해충방제, 방역, 소독 등의 모든 서비스를 의미합니다.</li>
-            <li>"이용자"란 이 약관에 따라 회사가 제공하는 서비스를 받는 자를 의미합니다.</li>
-            <li>"계약"이란 이 약관을 포함하여 서비스 이용과 관련하여 회사와 이용자 간에 체결하는 모든 계약을 의미합니다.</li>
-          </ul>
-        </div>
-
-        <div class="tos-section">
-          <h2>제3조 (약관의 효력 및 변경)</h2>
-          <h3>1. 약관의 효력</h3>
-          <p>이 약관은 서비스를 이용하고자 하는 모든 이용자에게 그 효력이 발생합니다.</p>
-          <h3>2. 약관의 변경</h3>
-          <p>회사는 필요에 따라 이 약관을 변경할 수 있으며, 변경된 약관은 웹사이트에 공지함으로써 효력이 발생합니다.</p>
-        </div>
-
-        <div class="tos-section">
-          <h2>제4조 (서비스의 제공)</h2>
-          <h3>1. 서비스 내용</h3>
-          <p>회사는 다음과 같은 서비스를 제공합니다.</p>
-          <ul>
-            <li>일반 해충방제 서비스</li>
-            <li>정기 방역 서비스</li>
-            <li>긴급 출동 서비스</li>
-            <li>해충 예방 컨설팅</li>
-            <li>기타 회사가 정하는 부가 서비스</li>
-          </ul>
-          <h3>2. 서비스 제공 시간</h3>
-          <p>서비스는 연중무휴 24시간 제공을 원칙으로 하나, 시설 점검, 보수 등의 사유로 서비스 제공이 일시 중단될 수 있습니다.</p>
-        </div>
-
-        <div class="tos-section">
-          <h2>제5조 (계약의 성립)</h2>
-          <p>서비스 이용계약은 이용자의 서비스 신청과 회사의 승낙으로 성립됩니다.</p>
-          <p>회사는 다음 각 호에 해당하는 경우 승낙을 거절할 수 있습니다.</p>
-          <ul>
-            <li>신청 내용이 허위인 경우</li>
-            <li>서비스 제공이 기술적으로 불가능한 경우</li>
-            <li>기타 회사가 정한 이용조건에 위배되는 경우</li>
-          </ul>
-        </div>
-
-        <div class="tos-section">
-          <h2>제6조 (이용자의 의무)</h2>
-          <p>이용자는 다음 각 호의 행위를 하여서는 안 됩니다.</p>
-          <ul>
-            <li>허위 정보의 제공</li>
-            <li>서비스 제공을 방해하는 행위</li>
-            <li>회사 직원에 대한 폭언, 폭행 등 부적절한 행위</li>
-            <li>서비스 이용료의 미납</li>
-            <li>기타 관련 법령에 위반되는 행위</li>
-          </ul>
-        </div>
-
-        <div class="tos-section">
-          <h2>제7조 (회사의 의무)</h2>
-          <p>회사는 안전하고 효과적인 서비스 제공을 위해 최선을 다하며, 다음 각 호의 의무를 집니다.</p>
-          <ul>
-            <li>전문적이고 안전한 서비스 제공</li>
-            <li>이용자 정보의 보호</li>
-            <li>서비스 품질 개선을 위한 지속적 노력</li>
-            <li>관련 법령 및 규정의 준수</li>
-          </ul>
-        </div>
-
-        <div class="tos-section">
-          <h2>제8조 (요금 및 결제)</h2>
-          <h3>1. 서비스 요금</h3>
-          <p>서비스 요금은 회사가 정한 요금표에 따르며, 사전에 이용자에게 고지됩니다.</p>
-          <h3>2. 결제 방법</h3>
-          <p>서비스 요금은 현금, 카드결제, 계좌이체 등 회사가 정한 방법으로 결제할 수 있습니다.</p>
-        </div>
-
-        <div class="tos-section">
-          <h2>제9조 (서비스의 중단)</h2>
-          <p>회사는 다음 각 호의 경우 서비스 제공을 중단할 수 있습니다.</p>
-          <ul>
-            <li>시설의 보수, 점검 등이 필요한 경우</li>
-            <li>천재지변, 국가비상사태 등 불가피한 사유가 있는 경우</li>
-            <li>이용자가 약관을 위반한 경우</li>
-          </ul>
-        </div>
-
-        <div class="tos-section">
-          <h2>제10조 (손해배상)</h2>
-          <p>회사는 서비스 제공과 관련하여 고의 또는 중대한 과실이 없는 한 이용자에게 발생한 손해에 대해 배상책임을 지지 않습니다.</p>
-          <p>단, 회사의 고의 또는 중과실로 인한 손해에 대해서는 관련 법령에 따라 배상합니다.</p>
-        </div>
-
-        <div class="tos-section">
-          <h2>제11조 (분쟁해결)</h2>
-          <p>서비스 이용과 관련하여 발생한 분쟁은 상호 협의를 통해 해결하는 것을 원칙으로 합니다.</p>
-          <p>협의로 해결되지 않는 경우 관련 법령에 따라 해결합니다.</p>
-        </div>
-
-        <div class="tos-section">
-          <h2>제12조 (기타)</h2>
-          <p>이 약관에 명시되지 않은 사항은 관련 법령 및 상관례에 따릅니다.</p>
-        </div>
-
-        <div class="effective-date">
-          <p>본 약관은 2024년 1월 1일부터 시행됩니다.</p>
-          <p>최종 수정일: 2024년 1월 1일</p>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h4>서비스</h4>
-          <ul>
-            <li><a href="/#services">일반 방제</a></li>
-            <li><a href="/#services">정기 관리</a></li>
-            <li><a href="/#services">긴급 출동</a></li>
-            <li><a href="/#services">예방 컨설팅</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>회사</h4>
-          <ul>
-            <li><a href="/#about">회사소개</a></li>
-            <li><a href="/#team">팀 소개</a></li>
-            <li><a href="/#contact">오시는 길</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>고객지원</h4>
-          <ul>
-            <li><a href="tel:1588-0000">1588-0000</a></li>
-            <li><a href="mailto:info@eopseum.com">info@eopseum.com</a></li>
-            <li><a href="/#faq">자주 묻는 질문</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>법적 고지</h4>
-          <ul>
-            <li><a href="/tos">서비스 이용약관</a></li>
-            <li><a href="/privacy">개인정보처리방침</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2024 벌레없음. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
-      } else {
-        header.style.boxShadow = 'none';
-      }
     });
   </script>
 </body>
